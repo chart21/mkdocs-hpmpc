@@ -5,7 +5,7 @@ Most benchmarks are contained in `programs/benchmarks`.
 In order to run a benchmark, first obtain the `FUNCTION_IDENTIFIER` of the benchmark you want to run that is defined in the source file of the respective benchmark.
 Typically, a benchmark relies on the `NUM_INPUTS` config option.
 To compile a benchmark for a specific number of inputs and protocols, run the following command:
-> make -j PARTY=<party_id> FUNCTION_IDENTIFIER=<function_identifier> NUM_INPUTS=<num_inputs>
+> make -j PARTY=<party_id> FUNCTION_IDENTIFIER=\<function_identifier\> NUM_INPUTS=\<num_inputs\>
 
 In the following lines we explain how to run interpret the results of a benchmark and to automate benchmarking of multiple configurations.
 
@@ -55,7 +55,10 @@ The results are stored in the `measurements/logs/` directory with the name of th
 Setting the number of iterations per run is useful to later compute means and standard deviations of the results. 
 Note that the config file may require a DATTYPE that is not supported by the target hardware. In this case, the override option allows to specify a different value than the one in the config file.
 The following command is an example for running a benchmark in a distributed setting on a specific hardware configuration with one GPU, AVX-2 (`DATTYPE=256`) support, 10 iterations per run, and a different number of processes:
-> ./measurements/run_config.py -p <party_id> -a <ip_address_a> -b <ip_address_b> -c <ip_address_c> -d <ip_address_d> -g 1 -i 10 measurements/configs/<config_file>.conf --override DATTYPE=256 PROCESS_NUM=12,24
+
+```bash
+./measurements/run_config.py -p <party_id> -a <ip_address_a> -b <ip_address_b> -c <ip_address_c> -d <ip_address_d> -g 1 -i 10 measurements/configs/<config_file>.conf --override DATTYPE=256 PROCESS_NUM=12,24
+```
 
 Finally, the results can be parsed using the `parse_logs.py` script. The script outputs a csv table with the results of the benchmark and automatically compute useful stats such as the runtime in seconds, the size of messages sent and received in MB, and the throughput in Gbps. If applicable, the script also computes the number of operations per second, accuracy, and the number of tests that passed.
 To compute the number of operations per seconds, the `.conf` file needs to provide `NUM_INPUTS`, `DATTYPE`, and `BITLENGTH` to compute the formula from above automatically.
