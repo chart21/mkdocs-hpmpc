@@ -1,6 +1,7 @@
 # Neural Networks
 
 `HPMPC` provides a high-level interface for performing secure inference of neural networks.
+
 - `PIGEON` is a templated inference engine for private inference of neural networks and handles the data flow between layers.
 - `PyGEON` is a Python library that allows users to export models and datasets from `PyTorch` to `PIGEON`.
 - `Programs/NN` orchestrates the execution of `PIGEON` and the MPC backend.
@@ -143,6 +144,7 @@ For instance, the following line defines that the VGG model is evaluated when th
     int n_test = NUM_INPUTS*BASE_DIV, ch = 3, h = 32, w = 32, num_classes = 10; // CIFAR-10 input dimensions
     auto model = VGG<modeltype>(num_classes); // CNN architecture as defined in CNNs.hpp of PIGEON
 #endif
+```
 
 A custom model can be evaluated by defining a new architecture in `CNNs.hpp` and assigning a new FUNCTION_IDENTIFIER to the model in `NN.hpp`. The program ensures that each process handles a separate part of the dataset and prints the accuracy of its classifications in the terminal.
 

@@ -1,0 +1,46 @@
+# HPMPC: High Performance Secure Multi-Party Computation
+
+HPMPC is a C++ framework for Secure Multi-Party Computation (MPC) that provides various tweaks and design choices to scale MPC programs to large-scale workloads.
+The framework contains the following software components.
+
+| Component | Description | Dependencies |
+| --- | --- | --- |
+| `Core` | Implements networking, cryptographic primitives, and hardware acceleration techniques such as BitSlicing, Vectorization, and GPU acceleration. | - |
+| `Protocols` | Implements various MPC protocols with a fixed interface for each primitive. | Utilizes high-level interfaces from `Core` for networking and cryptographic primitives. |
+| `Datatypes` | Provides datatypes for arithmetic circuits, boolean circuits, and fixed-point arithmetic. | Maps each operation on secret shares to the primitives implemented by a `Protocol`. |
+| `Programs` | Implements high-level functions, routines, use cases, tests, and benchmarks. | Utilizes `Datatypes` to offer a generic programming interface for MPC. |
+| `Measurements` | Provides config files and scripts to automate benchmarking and testing of MPC workloads. | Uses implemented `Programs` to run benchmarks and tests. |
+| `Neural Networks` | Implements neural network inference with MPC. | Combines functions implemented in `Programs` with `PIGEON`, a templated neural network inference engine to run neural networks using MPC. |
+
+The framework is designed to be modular and extensible, allowing users to implement new MPC protocols and functions without in-depth knowledge of other components.
+
+## Protocols 
+
+Out of the box, the framework provides the following MPC protocols that support different high-level primitives. The basic primitives cover secret sharing revealing, addition, and multiplication, which enables computing functions such as AES that do not require share conversion. Protocols supporting all primitives support all programs implemented by the framework to also evaluate mixed circuits and fixed-point arithmetic.
+
+Protocols can be selected with the `PROTOCOL` configuration option when compiling an executable. For instance, setting `PROTOCOL=5` will compile the executable with Protocol 5 (Trio). 
+The preprocessing phases allow shifting some computation and communication to a input-independent phase before the online phase. This phase is optional and can be activated using the `PRE=1` config option when compiling an executable.
+Maliciously secure protocols print a terminal message when a hash-based consistency check fails to indicate aborting the computation.
+
+
+| Protocol | Adversary Model | Preprocessing | Supported Primitives |
+| --- | --- | --- | --- |
+| `1` Sharemind (3PC) | Semi-Honest | ✘ | Basic
+| `2` Replicated (3PC) | Semi-Honest |✘  | Basic
+| `3` ASTRA (3PC) | Semi-Honest | ✔ | Basic
+| `4` ABY2 Dummy (2PC) | Semi-Honest | ✔ | Basic
+| `5` Trio (3PC) | Semi-Honest | ✔ | All
+| `6` TTP (3PC) | Semi-Honest | ✘ | All
+| `7` TTP (4PC) | Semi-Honest | ✘ | All
+| `8` Tetrad (4PC) | Malicious | ✔ | Basic
+| `9` Fantastic Four (4PC) | Malicious | ✘ | Basic
+| `10` Quad (4PC) | Malicious | ✘ | All
+| `11` Quad: Het (4PC) | Malicious | ✔ | All
+| `12` Quad (4PC) | Malicious | ✔ | All
+
+## Programs
+
+Each predefined program is mapped to a `FUNCTION_IDENTIFIER` that can be set when compiling an executable. 
+The `protocol_executer.hpp` file contains the mapping of `FUNCTION_IDENTIFIER` to their corresponding source files.
+For instance, `FUNCTION_IDENTIFIER` 0-7 are reserved for benchmarking basic primtives. 
+Programs can import `Datatypes` and `Functions` to enable programming of MPC workloads.
