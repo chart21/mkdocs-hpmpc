@@ -14,7 +14,7 @@
 ### Architectures
 
 `Architectures` for neural networks are defined in the `architectures` directory. 
-Out of the box `PIGEON` supports multiple `ResNet` and Convolutional Neural Network (CNN) architectures such as AlexNet, VGG, and LeNet.
+Out of the box `PIGEON` supports multiple ResNet and Convolutional Neural Network (CNN) architectures such as AlexNet, VGG, and LeNet.
 
 The following is an example of the LeNet architecture as defined in `CNNs.hpp`. As one can see, layers can be defined in a similar manner to `PyTorch`. Architectures such as ResNets can also be defined in a programmatic manner as seen in `ResNet.hpp`.
 The example below also shows a ReLU layer with reduced bitlength. 
@@ -69,6 +69,7 @@ The following is a list of layers currently implemented in `PIGEON`:
 ## PyGEON
 
 `PyGEON` is a Python library that allows users to export models and datasets from `PyTorch` to `PIGEON`. The library provides the following functionalities.
+
 - Download, transform, and edit datasets in PyTorch and export them as `.bin` files
 - Train models in PyTorch and export them as `.bin` files
 - Import existing model parameters as `.pth` files and export them as `.bin` files
@@ -85,15 +86,16 @@ A single line of code suffices to train a model in PyTorch and export it to `PIG
 ```
 
 The `main.py` script provides the following functionalities:
+
 | Argument | Description |
 | --- | --- |
-| `--action` | Action to perform on the model: `train`, `import`, `train_all (for training all predifined model architectures)`, `none` (i.e. for only exporting the dataset) |
+| `--action` | Action to perform on the model: `train`, `import`, `train_all (for training all predifined model architectures)`, `none` (e.g. for only exporting the dataset) |
 | `--export_model` | Export the model as a `.bin` file for `PIGEON` |
 | `--export_dataset` | Export the test dataset as a `.bin` file for `PIGEON` |
 | `--model` | Model architecture as defined in `cnns.py` |
 | `--num_classes` | Number of classes in the dataset |
 | `--dataset_name` | Name of the dataset as defined in `data_load.py` |
-| `--modelpath` | Path to save/load the model |
+| `--modelpath` | Path to save the model to (if --export_model is set) or load the model from (if --action is `import`) |
 | `--num_epochs` | Number of epochs to train the model |
 | `--lr` | Learning rate for the optimizer |
 | `--criterion` | Loss function to use |
@@ -106,7 +108,7 @@ New model architectures can be added to `cnns.py` and new datasets can be added 
 
 We provide a set of pretrained models that can be imported to `PIGEON` using the `download_pretrained.py` script. 
 
-The following command downloads all pretrained models to the `models/pretrained' folder and all datasets to the `data/datasets` folder.
+The following command downloads all pretrained models to the `models/pretrained` folder and all datasets to the `data/datasets` folder.
 ```bash
 python download_pretrained.py all
 ```
@@ -129,15 +131,16 @@ python download_pretrained.py single_model datasets # Downloads VGG16 and all da
 
 ## NN
 
-`Programs/NN` orchestrates the execution of `PIGEON` and the MPC backend. The `NN` program provides the following functionalities:
+`Programs/NN` orchestrates the execution of `PIGEON` and the MPC backend. The `NN` program provides the following functionalities.
+
 - Load a model and dataset from `PyGEON` using environment variables.
 - Obtain the model parameters and the dataset from the right party and secretly share them.
 - Define the model architecture and dataset dimensions for performing a forward pass.
-- Perform a forward pass on the model using `PIGEON` and `HPMPC` as a backend.
+- Perform a forward pass on the model using `PIGEON` as the inference engine and `HPMPC` as the MPC backend.
 
 ### Evaluating a Model
 
-To evaluate a model, the program first assigns a FUNCTION_IDENTIFIER to the model and dataset. 
+To evaluate a model, the program first assigns a `FUNCTION_IDENTIFIER` to the model architecture and dataset dimensions. 
 For instance, the following line defines that the VGG model is evaluated when the FUNCTION_IDENTIFIER is set to 74.
 ```cpp
 #if FUNCTION_IDENTIFIER == 74 
@@ -146,11 +149,11 @@ For instance, the following line defines that the VGG model is evaluated when th
 #endif
 ```
 
-A custom model can be evaluated by defining a new architecture in `CNNs.hpp` and assigning a new FUNCTION_IDENTIFIER to the model in `NN.hpp`. The program ensures that each process handles a separate part of the dataset and prints the accuracy of its classifications in the terminal.
+A custom model can be evaluated by defining a new architecture in `CNNs.hpp` or `ResNet.hpp` and assigning a new `FUNCTION_IDENTIFIER` to the model in `NN.hpp`. The program ensures that each process and vector handles a separate part of the dataset and prints the accuracy of its classifications in the terminal.
 
 ### Sharing Model Parameters and Data
 
-The program then checks which party is responsible for sharing the model parameters and which party is responsible for sharing the dataset. 
+The program checks which party is responsible for sharing the model parameters and which party is responsible for sharing the dataset. 
 The parties can be specified with the `MODELOWNER` and `DATAOWNER` config options. `MODELOWNER=P_0` and `DATAOWNER=P_1` specify that party 0 is responsible for sharing the model and party 1 is responsible for sharing the dataset. Setting `MODELOWNER=-1` and `DATAOWNER=-1` skips secret sharing which is useful for benchmarking.
 
 For the node acting as the model owner, the program loads the model parameters from the `.bin` file as defined by the environment variables `MODEL_DIR` and `MODEL_FILE`. The model at `MODEL_DIR/MODEL_FILE` is loaded and its parameters are secretly shared. Below is an example of how to set the environment variables for the VGG16 model trained on CIFAR-10.

@@ -11,7 +11,7 @@ HPMPC implements several functions on top of these basic primitives to implement
 ## Adding a new protocol
 
 The init protocol, actual protocol, and optional post protocol need to be defined in separate classes. 
-Whether to implement a joint class for each party or separate classes for each party depends on the difference between the computation of each party.
+Whether it is useful to implement a joint class for all parties or a separate class for each party depends on the difference between the computation of each party.
 A minimal example requires implementing the following functions for the Init and the actual protocol.
 
 - `prepare_receive_from()` and `complete_receive_from()` to secretly share a value
@@ -21,9 +21,9 @@ With these primitives in place, secret sharing and revealing can be tested.
 The other primitives can then be implemented and tested step by step.
 
 !!! Note
-    All protocols require identical function signatures to be later used as a template. The function signatures are defined by all previous protocols. HPMPC uses compile-time polymorphism using templates for improved performance and thus does not provide a base class for the protocols.
+    All protocols require identical function signatures to be later used as a template. The function signatures are defined by all previous protocols which may serve as references. HPMPC uses compile-time polymorphism using templates for improved performance and thus does not provide a base class for the protocols.
 
-After implementing the source files for a protocol, the files need to be referenced in `Protocols.h` and a `FUNCTION_IDENTIFIER` needs to be defined. In case a party also requires the implementation of a post protocol, the post protocol needs to be referenced in `generic_share.hpp`.
+After implementing the source files for a protocol, the files need to be referenced in `Protocols.h` and a `PROTOCOL` identifier needs to be defined. In case a party also requires the implementation of a post protocol, the post protocol needs to be referenced in `config.h`.
 
 !!! Tip
     Examples of several protocols can be found in the `Protocols` folder. Especially the `Replicated` and `Sharemind` protocols are good starting points for new protocols.
@@ -39,7 +39,8 @@ class ProtocolXYZ_Share{
 private:
     Datatype i;
     Datatype ip1;
-}
+public:
+...
 ```
 
 Each primitive such as multiplication and addition can then be implemented as a function of this class. Note that local operations are also provided by templates since the `+,-,*` overloads are not provided for all possible datatypes.
@@ -52,14 +53,15 @@ return ProtocolXYZ_Share{ADD(i,b.i), ADD(ip1,b.ip1)};
 
 Primitives can utilize functions provided by the `Core` to invoke cryptographic operations and network communication. The following function might implement a multiplication protocol for our fictional protocol:
 ```cpp
-template <typename func_add, func_sub, func_mult>
+template <typename func_add, typename func_sub, typename func_mult>
 ProtocolXYZ_Share prepare_mult(ProtocolXYZ_Share b, func_add ADD, func_sub SUB, func_mult MULT) const {
-Datatype msg = ADD(MULT(i,b.i),getRandomVal(PPREV));
-send_to_live(PNEXT, i);
-return ProtocolXYZ_Share{msg, 
+Datatype mask = getRandomVal(PNEXT);
+Datatype msg = ADD(MULT(i,b.i),mask);
+send_to_live(PNEXT, msg);
+return ProtocolXYZ_Share{msg, mask};
 }
 
-template <typename func_add, func_sub>
+template <typename func_add, typename func_sub>
 void complete_mult(func_add ADD, func_sub SUB) {
 Datatype msg = recv_from_live(PPREV);
 ip1 = SUB(ip1, msg)
@@ -80,25 +82,28 @@ The following table provides an overview of the available operations.
 
 ### Init Protocols
 
-Init protocols only describe the communication pattern of the actual protocol. They require the same function signatures as the actual protocols. For instance, the earlier defined Share might have an init protocol that looks like this:
+Init protocols only describe the communication pattern of the actual protocol. They require the same function signatures as the actual protocols. For instance, the earlier defined class might have an init protocol that looks like this:
 ```cpp
 template <typename Datatype>
 class ProtocolXYZ_Init{
 private:
 // no data required
 public:
+
 template <typename func_add>
 ProtocolXYZ_Init Add(ProtocolXYZ_Init b, func_add ADD) const {
 return ProtocolXYZ_Init();
 }
-template <typename func_add, func_sub, func_mult>
+
+template <typename func_add, typename func_sub, typename func_mult>
 ProtocolXYZ_Init prepare_mult(ProtocolXYZ_Init b, func_add ADD, func_sub SUB, func_mult MULT) const {
-send_to_(PNEXT);
+send_to_(PNEXT); // corresponing init function for send_to_live
 return ProtocolXYZ_Init();
 }
-template <typename func_add, func_sub>
+
+template <typename func_add, typename func_sub>
 void complete_mult(func_add ADD, func_sub SUB) {
-receive_from_(PPREV);
+receive_from_(PPREV); // corresponing init function for recv_from_live
 }
 };
 ```
@@ -108,7 +113,7 @@ receive_from_(PPREV);
 Some protocols offer a preprocessing phase. If the config option `pre=1` is set, the preprocessing phase is separated from the online phase. The online phase can then be implemented in the post-protocol. The post-protocol requires the same function signatures as the preprocessing protocol.
 Parties that only receive data in the preprocessing phase do not require a post-protocol. Instead, they automatically wait in the preprocessing phase until all data is received.
 
-!!! Warning
+!!! Note
     If the config option `pre=0` is set, the post protocol is not executed and the offline and online phases are executed in the same protocol.
 
 !!! Tip

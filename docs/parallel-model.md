@@ -1,6 +1,6 @@
 # The Vectorized Programming Model
 
-HPMPC minimizes thread synchronization by using a vectorized programming model.
+HPMPC maximizes resource utilization and minimizes thread synchronization by using a vectorized programming model.
 Each operation performed on secret shares by a program is inherently parallelized by using SIMD instructions and multiple processes.
 To illustrate the vectorized programming model, consider the following example:
 
@@ -26,8 +26,8 @@ UINT_TYPE x_values[vectorization_factor];
 UINT_TYPE y_values[vectorization_factor];
 for(int i=0; i<vectorization_factor; i++)
 {
-    x_values[i] = i+process_offset;
-    y_values[i] = i+process_offset+vectorization_factor;
+    x_values[i] = i+process_offset; // dummy value assignment
+    y_values[i] = i+process_offset+vectorization_factor; // dummy value assignment
 }
 orthogonalize_arithmetic(x_values, x_vectorized_values,1);
 orthogonalize_arithmetic(y_values, y_vectorized_values,1);
@@ -49,14 +49,14 @@ DATATYPE x_vectorized_values, y_vectorized_values;
 for(int i=0; i<vectorization_factor; i++)
 {
     UINT_TYPE x_values[vectorization_factor];
-    x_values[i] = i+process_offset;
+    x_values[i] = i+process_offset; // dummy value assignment
     orthogonalize_arithmetic(x_values, x_vectorized_values,1);
 }
 #elif PARTY == P_1 // Code block only gets executed by party 1
 for(int i=0; i<vectorization_factor; i++)
 {
     UINT_TYPE y_values[vectorization_factor];
-    y_values[i] = i+process_offset+vectorization_factor;
+    y_values[i] = i+process_offset+vectorization_factor; // dummy value assignment
     orthogonalize_arithmetic(y_values, y_vectorized_values,1);
 }
 #endif
@@ -93,18 +93,20 @@ Assume that x,y, and z are now arrays of size 100. Observe that the following co
 ```cpp
 for(int i=0; i<100; i++)
     z[i] = x[i].prepare_mult(y[i]);
-    Share::communicate();
+Share::communicate();
 for(int i=0; i<100; i++)
     z[i].complete_mult_without_trunc();
+
+DATATYPE vectorized_result_values[100];
+UINT_TYPE result_values[100][vectorization_factor];
 
 for(int i=0; i<100; i++)
     z[i].prepare_reveal_to_all();
 Share::communicate();
-DATATYPE vectorized_result_values[100];
-UINT_TYPE result_values[100][vectorization_factor];
 for(int i=0; i<100; i++)
     vectorized_result_values[i] = z[i].complete_reveal_to_all();
 unorthogonalize_arithmetic(vectorized_result_values, result_values,100);
+
 for(int i=0; i<100; i++)
     for(int j=0; j<vectorization_factor; j++)
         std::cout << result_values[i][j] << std::endl;

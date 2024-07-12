@@ -1,6 +1,7 @@
 # Programs
 
 `Programs` define high-level functions and workloads that can be executed in an MPC-generic manner by using the provided `Datatypes`. Out of the box, HPMPC provides the following types of programs:
+
 - `Benchmarks`: Programs that are used to measure the performance of the MPC protocols and functions.
 - `Functions`: Programs that implement high-level functions such as comparisons, ReLUs, and matrix multiplications.
 - `Tests`: Programs that test the correctness of implemented functions and MPC primitives.
@@ -10,7 +11,7 @@ Especially, the `Functions` folder is relevant for users who want to implement t
 !!! Tip
     Before writing a new program, the tutorials in the `programs/tutorials` folder act as a starting point to understand how to implement functions using the provided datatypes.
 
-## Importing Existing Functions as Modules
+## Import Existing Functions as Modules
 
 The `Functions` folder contains a variety of high-level functions that are implemented in a protocol-agnostic manner. These functions can be imported as modules in a new program by including the corresponding header files. Below is an example of different functions that can be imported as modules.
 
@@ -24,7 +25,7 @@ The `Functions` folder contains a variety of high-level functions that are imple
 | `prob_div.hpp` | Functions for dividing a fixed point share by a public value probabilistically |
 
 Suppose a user wants to implement an average of two sets of numbers
-The following code snippet demonstrates how to import the `prob_div` function to compute the two batches using only a single communication round.
+The following code snippet demonstrates how to utilize the predfined `prob_div` function to compute the two batches using only a single communication round.
 ```cpp
 using A = Additive_Share<DATATYPE, Share>;
 A sum1 = A(0) + A(1) + A(2) + A(3) + A(4) + A(5) + A(6) + A(7) + A(8) + A(9);
@@ -41,7 +42,7 @@ Functions such as ReLU and comparisons also handle the share conversion between 
 The tutorials show how the `pack_additive` function can be used to convert a contiguous array of `Additive_Share` to a `sint` container, perform the operation, and convert the result back to an array of `Additive_Shares`.
 
 
-## Executing Predefined Programs
+## Execute Predefined Programs
 
 Predefined Programs can be executed by setting the `FUNCTION_IDENTIFIER` config option in the `Makefile` or `config.h` file. The `protocol_executer.hpp` file contains a mapping of function identifiers to the corresponding functions that are executed by an executable.
 For instance, the following line in `protocol_executer.hpp` maps the function identifiers 0-7 to the benchmarks in the `bench_basic_primitives.hpp` file.
@@ -51,8 +52,8 @@ For instance, the following line in `protocol_executer.hpp` maps the function id
 ```
 By inspecting the `bench_basic_primitives.hpp` file, one can see that each function_identifer from 0-7 corresponds to a different benchmark function.
 
-## Implementing Custom Programs
+## Implement Custom Programs
 
-To implement a custom program, the user needs to create a new header file in the `programs` folder and include the header file in the `protocol_executer.hpp` file when the function identifier is set to a chosen value. For additional details on how to implement a custom program, the tutorial `programs/tutorials/YourFirstProgram.hpp` should get users started and provide examples on how to import modules and datatypes to implement a custom program.
+To implement a custom program, the user needs to create a new header file in the `programs` folder and include the header file in the `protocol_executer.hpp` file when the function identifier is set to a chosen value. For additional details on how to implement a custom program, the tutorial `programs/tutorials/YourFirstProgram.hpp` should get users started and provides examples on how to import modules and datatypes to implement a custom program.
 
 

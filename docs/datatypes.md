@@ -3,7 +3,8 @@
 Datatypes provide a protocol-agnostic interface to implement high-level MPC functions.
 For instance, a matrix multiplication can be implemented by using a dot product primitive of a protocol in a black box manner. For this purpose, the `Additive_Share` class provides generic interfaces that all protocols need to implement. Similarly, the `XOR_Share` class provides an interface for operations in the boolean domain.
 
-The datatypes `sint` and `Bitset` are containers that are used by functions such as comparisons to efficiently switch between Bitslicing and Vectorization during share conversion. In most cases, these datatypes do not need to be used directly, as functions, such as comparisons and ReLUs, are already implemented in a protocol-agnostic and can be imported as modules from the `programs/functions` folder.
+The datatypes `sint` and `Bitset` are containers that are used by functions such as comparisons to efficiently switch between Bitslicing and Vectorization during share conversion.
+In most cases, these datatypes do not need to be used directly, as functions, such as comparisons and ReLUs, are already implemented and can be imported as modules from the `programs/functions` folder.
 
 Finally, the `FloatFixedConverter` class converts floating point numbers to fixed point numbers and vice versa. One conversion is typically required before secretly sharing a floating point number and the other conversion is required after revealing the result of a computation to convert the fixed point number back to a floating point number.
 
@@ -19,7 +20,7 @@ The following tables provide an overview of the datatypes and their functions.
 
 ## Implementing functions with Datatypes
 
-The tutorials in the `programs/tutorials` folder provide examples of how to implement functions using the provided datatypes. Below is a quick example of how to operate on `Additive_Share` datatypes. As one can see, shares behave like normal integers and can be used with STL containers such as `std::vector`.
+The tutorials in the `programs/tutorials` folder provide examples of how to implement functions using the provided datatypes. Below is a quick example of how to operate on `Additive_Share` datatypes. As one can see, shares behave similarly to normal integers and can be used with STL containers such as `std::vector`.
 
 ```cpp
 template <typname Share> 
