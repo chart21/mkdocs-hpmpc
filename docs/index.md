@@ -80,7 +80,7 @@ This will result in a single-threaded execution of the program without any vecto
     Not all `DATTYPE` values are supported by all hardware architectures. Additionally, some `BITLENGTH`s are not supported by certain DATTYPEs. Learn more [here](core.md#arch). 
     Understanding the vectorized programming model is crucial to writing correct programs. Refer to the tutorials and [detailed documentation](parallel-model.md) for more information.
 
-## Compiling and Running Programs
+## Compile and Run Programs
 
 You can use the provided Dockerfile or set up the project manually. The only dependency is OpenSSL. Neural Networks and other functions with matrix operations also require the Eigen library. Install on your target system, for instance via ```apt install libssl-dev libeigen3-dev```. 
 
@@ -179,7 +179,7 @@ pip install torch torchvision
 pip install gdown 
 ```
 
-### Run neural network inference
+### Run Private Inference
 
 The `programs/NN.hpp` file contains a mapping of various neural network architectures to a `FUNCTION_IDENTIFIER`. 
 The following command compiles a neural network inference of `VGG16` on the CIFAR-10 dataset (`FUNCTION_IDENTIFIER=74`). 

@@ -77,7 +77,7 @@ The following is a list of layers currently implemented in `PIGEON`:
 The generated `.bin` files are compatible with `PIGEON` and can be used to achieve similar accuracy as the original model in PyTorch.
 
 
-### Training and Exporting a Model
+### Train and Export a Model
 
 A single line of code suffices to train a model in PyTorch and export it to `PIGEON`. The following command trains an AlexNet model on the CIFAR-10 dataset for 30 epochs and exports the model and datasets as `.bin` files.
 
@@ -104,7 +104,7 @@ The `main.py` script provides the following functionalities:
 
 New model architectures can be added to `cnns.py` and new datasets can be added to `data_load.py` to extend the functionality of `PyGEON`.
 
-### Importing pretrained models
+### Import Pretrained Models
 
 We provide a set of pretrained models that can be imported to `PIGEON` using the `download_pretrained.py` script. 
 
@@ -138,7 +138,7 @@ python download_pretrained.py single_model datasets # Downloads VGG16 and all da
 - Define the model architecture and dataset dimensions for performing a forward pass.
 - Perform a forward pass on the model using `PIGEON` as the inference engine and `HPMPC` as the MPC backend.
 
-### Evaluating a Model
+### Evaluate a Model
 
 To evaluate a model, the program first assigns a `FUNCTION_IDENTIFIER` to the model architecture and dataset dimensions. 
 For instance, the following line defines that the VGG model is evaluated when the FUNCTION_IDENTIFIER is set to 74.
@@ -151,7 +151,7 @@ For instance, the following line defines that the VGG model is evaluated when th
 
 A custom model can be evaluated by defining a new architecture in `CNNs.hpp` or `ResNet.hpp` and assigning a new `FUNCTION_IDENTIFIER` to the model in `NN.hpp`. The program ensures that each process and vector handles a separate part of the dataset and prints the accuracy of its classifications in the terminal.
 
-### Sharing Model Parameters and Data
+### Secret Sharing of Model Parameters and Data
 
 The program checks which party is responsible for sharing the model parameters and which party is responsible for sharing the dataset. 
 The parties can be specified with the `MODELOWNER` and `DATAOWNER` config options. `MODELOWNER=P_0` and `DATAOWNER=P_1` specify that party 0 is responsible for sharing the model and party 1 is responsible for sharing the dataset. Setting `MODELOWNER=-1` and `DATAOWNER=-1` skips secret sharing which is useful for benchmarking.

@@ -39,6 +39,9 @@ A z = x + y;
 The code snippet above assigns a unique value to each of the 512 shares by using the `orthogonalize_arithmetic` function to convert an array of unsigned integers to a vectorized value that matches the register size specified by `DATTYPE`.
 It also uses the globally available `process_offset` to determine the unique process ID and assign different values depending on the process ID. The `process_offset` also works correctly with SPLITROLES across executables.
 
+
+### Vectorized Secret Sharing and Revealing
+
 A full example would typically also involve secret sharing as opposed to setting all values from public data.
 ```cpp
 using A = Additive_Share<DATATYPE, Share>;
@@ -85,6 +88,8 @@ unorthogonalize_arithmetic(vectorized_result, result_values,1);
 for(int i=0; i<vectorization_factor; i++)
     std::cout << result_values[i] << std::endl;
 ```
+
+### Minimizing Communication Rounds
 
 The previous examples illustrated how the vectorized programming model can be used to parallelize operations on secret shares.
 However, in addition to vectorizing individual operations, multiple operations should also be grouped together to minimize the number of communication rounds between parties. 

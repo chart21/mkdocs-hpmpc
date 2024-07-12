@@ -18,7 +18,7 @@ The following tables provide an overview of the datatypes and their functions.
 | `Bitset`| A container of size `BITLENGTH` storing `XOR_Shares` |
 | `FloatFixedConverter`| A static struct to convert floating point numbers to fixed point numbers and vice versa |
 
-## Implementing functions with Datatypes
+## Implementing Functions with Datatypes
 
 The tutorials in the `programs/tutorials` folder provide examples of how to implement functions using the provided datatypes. Below is a quick example of how to operate on `Additive_Share` datatypes. As one can see, shares behave similarly to normal integers and can be used with STL containers such as `std::vector`.
 
