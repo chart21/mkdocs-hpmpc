@@ -16,9 +16,9 @@
 `Architectures` for neural networks are defined in the `architectures` directory. 
 Out of the box `PIGEON` supports multiple `ResNet` and Convolutional Neural Network (CNN) architectures such as AlexNet, VGG, and LeNet.
 
-The following is an example of the LeNet architecture as defined in `CNNs.hpp`. As one can see, layers can be defined in a similiar manner to `PyTorch`. Architectures such as ResNets can also be defined in a programmatic manner as seen in `ResNet.hpp`.
+The following is an example of the LeNet architecture as defined in `CNNs.hpp`. As one can see, layers can be defined in a similar manner to `PyTorch`. Architectures such as ResNets can also be defined in a programmatic manner as seen in `ResNet.hpp`.
 The example below also shows a ReLU layer with reduced bitlength. 
-In the example only bits 8-16 are used for the sign bit extraction required by ReLU thus reducing communication complexity at the cost of accuracy. Related Work such as `Hummingbird` can be used to identify the optimal bitlength for each layer.
+In the example, only bits 8-16 are used for the sign bit extraction required by ReLU thus reducing communication complexity at the cost of accuracy. Related Work such as `Hummingbird` can be used to identify the optimal bitlength for each layer.
 
 ```cpp
 template <typename T>       
@@ -46,9 +46,9 @@ class LeNet : public SimpleNN<T>
 ### Headers
 
 Layers are implemented in a generic manner in the `headers` directory. 
-`PIGEON` itself only performs non-arithmetic operations such as matrix transposition, reshaping and handling the data flow between layers.
+`PIGEON` itself only performs non-arithmetic operations such as matrix transposition, reshaping, and handling the data flow between layers.
 All arithmetic operations are performed by high-level functions provided by `HPMPC`.
-This modular design allows for easy addition of new layers and neural networks architectures to `PIGEON` without knowledge of the MPC backbone. 
+This modular design allows for an easy addition of new layers and neural network architectures to `PIGEON` without knowledge of the MPC backbone. 
 `PIGEON` could potentially be used with other MPC backends as long as they provide the required high-level functions with the interface required by `PIGEON`.
 
 The following is a list of layers currently implemented in `PIGEON`:
@@ -73,12 +73,12 @@ The following is a list of layers currently implemented in `PIGEON`:
 - Train models in PyTorch and export them as `.bin` files
 - Import existing model parameters as `.pth` files and export them as `.bin` files
 
-The generated `.bin` files are compatible with `PIGEON` and can be used to achieve similiar accuracy as the original model in PyTorch.
+The generated `.bin` files are compatible with `PIGEON` and can be used to achieve similar accuracy as the original model in PyTorch.
 
 
 ### Training and Exporting a Model
 
-A single line of code sufficies to train a model in PyTorch and export it to `PIGEON`. The following command trains an AlexNet model on the CIFAR-10 dataset for 30 epochs and exports the model and datasets as `.bin` files.
+A single line of code suffices to train a model in PyTorch and export it to `PIGEON`. The following command trains an AlexNet model on the CIFAR-10 dataset for 30 epochs and exports the model and datasets as `.bin` files.
 
 ```bash
  python main.py --action train --export_model --export_dataset --transform standard --model AlexNet --num_classes 10 --dataset_name CIFAR-10 --modelpath ./models/alexnet_cifar --num_epochs 30 --lr 0.01 --criterion CrossEntropyLoss --optimizer Adam
@@ -110,7 +110,7 @@ The following command downloads all pretrained models to the `models/pretrained'
 ```bash
 python download_pretrained.py all
 ```
-Note that downloading all model requires a few GB of disk space. Thus, we also provide the option to download some of the models and datasets with the following options.
+Note that downloading all models requires a few GB of disk space. Thus, we also provide the option to download some of the models and datasets with the following options.
 
 | Argument | Description |
 | --- | --- |
@@ -151,7 +151,7 @@ A custom model can be evaluated by defining a new architecture in `CNNs.hpp` and
 ### Sharing Model Parameters and Data
 
 The program then checks which party is responsible for sharing the model parameters and which party is responsible for sharing the dataset. 
-The parties can be specified with the `MODELOWNER` and `DATAOWNER` config options. `MODELOWNER=P_0` and `DATAOWNER=P_1` specifies that party 0 is responsible for sharing the model and party 1 is responsible for sharing the dataset. Setting `MODELOWNER=-1` and `DATAOWNER=-1` skips secret sharing which is useful for benchmarking.
+The parties can be specified with the `MODELOWNER` and `DATAOWNER` config options. `MODELOWNER=P_0` and `DATAOWNER=P_1` specify that party 0 is responsible for sharing the model and party 1 is responsible for sharing the dataset. Setting `MODELOWNER=-1` and `DATAOWNER=-1` skips secret sharing which is useful for benchmarking.
 
 For the node acting as the model owner, the program loads the model parameters from the `.bin` file as defined by the environment variables `MODEL_DIR` and `MODEL_FILE`. The model at `MODEL_DIR/MODEL_FILE` is loaded and its parameters are secretly shared. Below is an example of how to set the environment variables for the VGG16 model trained on CIFAR-10.
 ```bash
@@ -168,5 +168,6 @@ export LABELS_FILE=CIFAR-10_standard_test_labels.bin
 ```
 
 Note that each party that requires obtaining the correct accuracy needs the labels of the dataset in plaintext. The environment variables can be adjusted without the need to recompile the program. Also, the program prints in the terminal whether the model and dataset were loaded correctly.
+
 
 

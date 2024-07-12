@@ -1,17 +1,17 @@
 # Protocols
 
-The `Protocols` folder contains multiple MPC protocols that implement MPC primitves on a high-level by utilizing templating and functions provided by the `Core`.
+The `Protocols` folder contains multiple MPC protocols that implement MPC primitives on a high level by utilizing templating and functions provided by the `Core`.
 
-Each protocol requires an init-Protocol and an actual protocol. The init-Protocol only describes the communication pattern of each primitive and the actual protocol implements the computation. Since HPMPC supports different registersizes in a generic way, the protocols operate on templated datatypes. Protocols that require a preprocessing phase can also implement a post protocol. The post protocol is executed after the preprocessing phase.
+Each protocol requires an init-Protocol and an actual protocol. The init-Protocol only describes the communication pattern of each primitive and the actual protocol implements the computation. Since HPMPC supports different register sizes in a generic way, the protocols operate on templated datatypes. Protocols that require a preprocessing phase can also implement a post-protocol. The post-protocol is executed after the preprocessing phase.
 
 The protocols only need to implement a few basic primitives such as secret sharing, revealing, addition, share conversion, dot products, and multiplications. 
-HPMPC implements several functions on top of these basic primitives to implement several protoocls such as comparisons or matrix multiplication, and provides unit tests for to ensure that the protocols are implemented correctly. 
+HPMPC implements several functions on top of these basic primitives to implement several protocols such as comparisons or matrix multiplication, and provides unit tests to ensure that the protocols are implemented correctly. 
 
 
 ## Adding a new protocol
 
-The init protocol, actual protocol, and optional post protocol need to be defined in seperate classes. 
-Whether to implement a join class for each party or seperate classes for each party depends on the difference between the computation of each party.
+The init protocol, actual protocol, and optional post protocol need to be defined in separate classes. 
+Whether to implement a joint class for each party or separate classes for each party depends on the difference between the computation of each party.
 A minimal example requires implementing the following functions for the Init and the actual protocol.
 
 - `prepare_receive_from()` and `complete_receive_from()` to secretly share a value
@@ -21,12 +21,12 @@ With these primitives in place, secret sharing and revealing can be tested.
 The other primitives can then be implemented and tested step by step.
 
 !!! Note
-    All protocol require identical function signatures to be later used as a template. The function signatures are defined by all previous protocols. HPMPC uses compile-time polymorphism using templates for improved performance and thus does not provide a base class for the protocols.
+    All protocols require identical function signatures to be later used as a template. The function signatures are defined by all previous protocols. HPMPC uses compile-time polymorphism using templates for improved performance and thus does not provide a base class for the protocols.
 
 After implementing the source files for a protocol, the files need to be referenced in `Protocols.h` and a `FUNCTION_IDENTIFIER` needs to be defined. In case a party also requires the implementation of a post protocol, the post protocol needs to be referenced in `generic_share.hpp`.
 
 !!! Tip
-    Examples for several protocols can be found in the `Protocols` folder. Especially the `Replicated` and `Sharemind` protocols are good starting points for new protocols.
+    Examples of several protocols can be found in the `Protocols` folder. Especially the `Replicated` and `Sharemind` protocols are good starting points for new protocols.
 
 ## Implementation
 
@@ -80,7 +80,7 @@ The following table provides an overview of the available operations.
 
 ### Init Protocols
 
-Init protocols only describe the communication pattern of the actual protocol. They require the same function signatures as the actual protocols. For instance the earlier defined Share might have an init protocol that looks like this:
+Init protocols only describe the communication pattern of the actual protocol. They require the same function signatures as the actual protocols. For instance, the earlier defined Share might have an init protocol that looks like this:
 ```cpp
 template <typename Datatype>
 class ProtocolXYZ_Init{
@@ -105,12 +105,13 @@ receive_from_(PPREV);
 
 ### Post protocols
 
-Some protocols offer a preprocessing phase. If the config option `pre=1` is set, the preprocessing phase is seperated from the online phase. The online phase can then be implemented in the post protocol. The post protocol requires the same function signatures as the preprocessing protocol.
-Parties that only receive data in the preprocessing phase do not require a post protocol. Instead, they automatically wait in the preprocessing phase until all data is received.
+Some protocols offer a preprocessing phase. If the config option `pre=1` is set, the preprocessing phase is separated from the online phase. The online phase can then be implemented in the post-protocol. The post-protocol requires the same function signatures as the preprocessing protocol.
+Parties that only receive data in the preprocessing phase do not require a post-protocol. Instead, they automatically wait in the preprocessing phase until all data is received.
 
 !!! Warning
-    If the config option `pre=0` is set, the post protocol is not executed and the offline and online phase are executed in the same protocol.
+    If the config option `pre=0` is set, the post protocol is not executed and the offline and online phases are executed in the same protocol.
 
 !!! Tip
     Only start implementing the post protocol after the actual protocol is implemented and tested with the option `pre=0`.
+
 

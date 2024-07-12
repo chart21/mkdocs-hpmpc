@@ -8,11 +8,11 @@ To compile a benchmark for a specific number of inputs and protocols, run the fo
 ```bash
 make -j PARTY=<party_id> FUNCTION_IDENTIFIER=<function_identifier> NUM_INPUTS=<num_inputs>
 ```
-In the following lines we explain how to run interpret the results of a benchmark and to automate benchmarking of multiple configurations.
+In the following lines, we explain how to run and interpret the results of a benchmark and to automate benchmarking of multiple configurations.
 
 ## Obtaining Benchmark Results
 
-As other MPC programs, benchmarks usually benefit from vectorization and parallelization.
+As with other MPC programs, benchmarks usually benefit from vectorization and parallelization.
 To obtain the best performance, it is recommended to run benchmarks with the maximum `DATTYPE` and `NUM_PROCESSES` that the hardware supports. In many cases, also `SPLITROLES` can be used to improve performance.
 Since the introduced parallelism increases the number of performed operations it is important to consider the number of inputs and the parallelization factor when interpreting the results.
 The parallelization factor can usually be calculated as follows:
@@ -57,15 +57,15 @@ By default, the script will run the benchmark for all parties locally. The follo
 
 The results are stored in the `measurements/logs/` directory with the name of the test and the timestamp. 
 Setting the number of iterations per run is useful to later compute means and standard deviations of the results. 
-Note that the config file may require a DATTYPE that is not supported by the target hardware. In this case, the override option allows to specify a different value than the one in the config file.
+Note that the config file may require a DATTYPE that is not supported by the target hardware. In this case, the override option allows specifying a different value than the one in the config file.
 The following command is an example for running a benchmark in a distributed setting on a specific hardware configuration with one GPU, AVX-2 (`DATTYPE=256`) support, 10 iterations per run, and a different number of processes:
 
 ```bash
 ./measurements/run_config.py -p <party_id> -a <ip_address_a> -b <ip_address_b> -c <ip_address_c> -d <ip_address_d> -g 1 -i 10 measurements/configs/<config_file>.conf --override DATTYPE=256 PROCESS_NUM=12,24
 ```
 
-Finally, the results can be parsed using the `parse_logs.py` script. The script outputs a csv table with the results of the benchmark and automatically compute useful stats such as the runtime in seconds, the size of messages sent and received in MB, and the throughput in Gbps. If applicable, the script also computes the number of operations per second, accuracy, and the number of tests that passed.
-To compute the number of operations per seconds, the `.conf` file needs to provide `NUM_INPUTS`, `DATTYPE`, and `BITLENGTH` to compute the formula from above automatically.
+Finally, the results can be parsed using the `parse_logs.py` script. The script outputs a csv table with the results of the benchmark and automatically computes useful stats such as the runtime in seconds, the size of messages sent and received in MB, and the throughput in Gbps. If applicable, the script also computes the number of operations per second, accuracy, and the number of tests that passed.
+To compute the number of operations per second, the `.conf` file needs to provide `NUM_INPUTS`, `DATTYPE`, and `BITLENGTH` to compute the formula from above automatically.
 The script can either be executed for a single log file or on a directory containing multiple log files.
 
 ```bash
@@ -74,4 +74,5 @@ The script can either be executed for a single log file or on a directory contai
 
 The neural network specific script `parse_layers.py` script collects statistics for each neural network layer and outputs a csv table with the results for each model. The script can be executed for a single log file or on a directory containing multiple log files.
 The `run_pretrained.py` executes all pretrained neural network models from `Pygeon` with different configurations regarding truncation, bitlength, and the number of fractional bits.
+
 

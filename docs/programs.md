@@ -8,7 +8,7 @@
 
 Especially, the `Functions` folder is relevant for users who want to implement their own program as multiple useful subroutines are already implemented by the the framework.
 !!! Tip
-    Before writing a new program, the tutorials in the `programs/tutorials` folder acts as a starting point to understand how to implement functions using the provided datatypes.
+    Before writing a new program, the tutorials in the `programs/tutorials` folder act as a starting point to understand how to implement functions using the provided datatypes.
 
 ## Importing Existing Functions as Modules
 
@@ -16,14 +16,14 @@ The `Functions` folder contains a variety of high-level functions that are imple
 
 | Header | Description |
 |--------|-------------|
-| `GEMM.hpp` | Functions for matrix multplication and matrix-vector multiplications |
+| `GEMM.hpp` | Functions for matrix multiplication and matrix-vector multiplications |
 | `Comparison.hpp` | Functions for comparisons such as less than zero, or equal to zero |
 | Different truncation headers | Functions for truncating fixed point numbers using approaches such as probabilistic rounding, or deterministic rounding |
 | Different adder headers | Functions to compute the carry-out or the sum of two boolean shares |
 | `ReLU.hpp` | Functions for computing the ReLU function |
 | `prob_div.hpp` | Functions for dividing a fixed point share by a public value probabilistically |
 
-Suppose a user want to implement an average of two sets of numbers
+Suppose a user wants to implement an average of two sets of numbers
 The following code snippet demonstrates how to import the `prob_div` function to compute the two batches using only a single communication round.
 ```cpp
 using A = Additive_Share<DATATYPE, Share>;
@@ -36,9 +36,9 @@ Share::communicate();
 complete_prob_div(averages, 2, 10); // output, batch size, denominator
 ```
 
-Other functions follow a similiar pattern. In order to reduce communication rounds, the user needs to provide a contigious block of shares that are processed all at once.
-Functions such as ReLU and comparisons also handle the share conversion between the boolean and arithmetic domain internally and provide both inputs and outputs in the arithmetic domain.
-The tutorials show how the `pack_additive` function can be used to convert a contigous array of `Additive_Share` to an `sint` container, perform the operation, and convert the result back to an array of `Additive_Shares`.
+Other functions follow a similar pattern. In order to reduce communication rounds, the user needs to provide a contiguous block of shares that are processed all at once.
+Functions such as ReLU and comparisons also handle the share conversion between the boolean and arithmetic domains internally and provide both inputs and outputs in the arithmetic domain.
+The tutorials show how the `pack_additive` function can be used to convert a contiguous array of `Additive_Share` to a `sint` container, perform the operation, and convert the result back to an array of `Additive_Shares`.
 
 
 ## Executing Predefined Programs
@@ -53,5 +53,6 @@ By inspecting the `bench_basic_primitives.hpp` file, one can see that each funct
 
 ## Implementing Custom Programs
 
-To implement a custom program, the user needs to create a new header file in the `programs` folder and include the header file in the `protocol_executer.hpp` file when the function identifier is set to a chosen value. For additional details on how to implement a custom program, the tutorial`programs/tutorials/YourFirstProgram.hpp` should get users started and provides examples on how to import modules and datatypes to implement a custom program.
+To implement a custom program, the user needs to create a new header file in the `programs` folder and include the header file in the `protocol_executer.hpp` file when the function identifier is set to a chosen value. For additional details on how to implement a custom program, the tutorial `programs/tutorials/YourFirstProgram.hpp` should get users started and provide examples on how to import modules and datatypes to implement a custom program.
+
 
