@@ -231,6 +231,6 @@ The following command is an example of running a benchmark and parsing the resul
 ```
 
 !!! Note
-    The --override option allows specifying a different value than the one in the config file. This might be necessary to adjust a `.conf` file to a specific target hardware. Learn more [here](measurements.md#automating-benchmarking).
+    The --override option allows specifying a different value than the one in the config file. This might be necessary to adjust a `.conf` file to a specific target hardware. Learn more [here](measurements.md#automate-benchmarking).
 
 
