@@ -1,11 +1,10 @@
 site_name: HPMPC Documentation
 repo_url: https://github.com/chart21/hpmpc
 site_url: https://c.harth-kitzerow.de/mkdocs-hpmpc/
-# site_url: http://127.0.0.1
 theme:
   name: material
   features:
-  - navigation.instant
+  # - navigation.instant
   - navigation.instant.preview
   # - navigation.tabs
   # - navigation.tabs.sticky
@@ -66,6 +65,7 @@ extra:
       link: https://github.com/chart21/hpmpc
 
 markdown_extensions:
+  - material.extensions.preview:
   - toc:
       permalink: false
       title: On this page
