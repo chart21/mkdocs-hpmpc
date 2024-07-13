@@ -48,14 +48,14 @@ using A = Additive_Share<DATATYPE, Share>;
 const int vectorization_factor=DATTYPE/BITLENGTH;
 DATATYPE x_vectorized_values, y_vectorized_values;
 
-#if PARTY == P_0 // Code block only gets executed by party 0
+#if PSELF == P_0 // Code block only gets executed by party 0
 for(int i=0; i<vectorization_factor; i++)
 {
     UINT_TYPE x_values[vectorization_factor];
     x_values[i] = i+process_offset; // dummy value assignment
     orthogonalize_arithmetic(x_values, x_vectorized_values,1);
 }
-#elif PARTY == P_1 // Code block only gets executed by party 1
+#elif PSELF == P_1 // Code block only gets executed by party 1
 for(int i=0; i<vectorization_factor; i++)
 {
     UINT_TYPE y_values[vectorization_factor];
