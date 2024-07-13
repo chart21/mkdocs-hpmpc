@@ -19,7 +19,7 @@ The framework is designed to be modular and extensible, allowing users to implem
     HPMPC also provides an extensive set of configuration options to customize MPC programs, optimize their performances, and support various hardware architectures. For more details, refer to [Configurations](configurations.md).
 
 
-## [Protocols](protocols.md)
+## [Protocols (Overview)](protocols.md)
 
 Out of the box, the framework provides multiple MPC protocols that support different primitives. The basic primitives cover secret sharing revealing, addition, and multiplication, which enables computing functions such as AES that do not require share conversion. Protocols supporting all primitives can also evaluate mixed circuits and fixed-point arithmetic. 
 
@@ -46,7 +46,7 @@ Maliciously secure protocols print a terminal message when a hash-based consiste
 !!! Tip
     For most applications `PROTOCOL=5` and `PROTOCOL=12` are recommended.
 
-## [Programs](programs.md)
+## [Programs (Overview)](programs.md)
 
 Each predefined program is mapped to a `FUNCTION_IDENTIFIER` that can be set when compiling an executable. 
 The `protocol_executer.hpp` file contains the mapping of `FUNCTION_IDENTIFIER` to their corresponding source files.
@@ -56,7 +56,7 @@ Programs can import `Datatypes` and existing `Functions` such as comparisons to 
 !!! Note
     There are multiple tutorials in `programs/tutorial` that demonstrate how to implement MPC programs using the framework's interface.
 
-## [Configurations](configurations.md)
+## [Configurations (Overview)](configurations.md)
 
 `Programs` can be compiled with various configurations. For instance, a program might use a certain `BITLENGTH`, `PROTOCOL`, and number of `FRACTIONAL` bits for fixed-point arithmetic.
 These config options are fetched from the `config.h` file which contains extensive configurations for details and tweaks to run MPC programs.
@@ -65,7 +65,7 @@ Changes can be made permanently in the `config.h` file or temporarily by specify
 make -j PARTY=<party_id> FUNCTION_IDENTIFIER=<function_identifier> BITLENGTH=<bitlength>
 ```
 
-## [The Vectorized Programming Model](parallel-model.md)
+## [The Vectorized Programming Model (Overview)](parallel-model.md)
 
 The framework uses the register length specified by the `DATTYPE` config option for all secret shares.
 This means that each arithmetic secret share is inherently a vector of `DATTYPE/BITLENGTH` elements and each boolean secret share is a vector of `DATTYPE` elements.
@@ -160,7 +160,7 @@ If each node has access to multiple GPUs these can be utilized with the `-g` opt
 scripts/run.sh -p 0 -a <ip_address_p0> -b <ip_address_p1> -c <ip_address_p2> -d <ip_address_p3> -s 1 -g 6
 ```
 
-## [Neural Networks](nn.md)
+## [Neural Networks (Overview)](nn.md)
 
 The `PIGEON` (Private Inference of Neural Networks) submodule is a templated neural network inference engine that can be used to run neural networks using MPC. 
 The second submodule, `PyGEON`, enables training and exporting models and datasets in PyTorch and importing them to `PIGEON` for inference.
@@ -221,7 +221,7 @@ scripts/run.sh -p <party_id> -a <ip_address_a> -b <ip_address_b> -c <ip_address_
 
 
 
-## [Measurements](measurements.md)
+## [Measurements (Overview)](measurements.md)
 
 To automate benchmarking of multiple configurations, the framework provides configuration files in `measurements/configs/`. By using the associated `measurements/run_config.py` and `measurements/parse_logs.py` scripts, programs can be compiled and executed with various configurations while results are stored in the `measurements/logs/` directory. 
 The following command is an example of running a benchmark and parsing the results.

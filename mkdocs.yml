@@ -1,12 +1,20 @@
 site_name: HPMPC Documentation
 repo_url: https://github.com/chart21/hpmpc
+site_url: https://c.harth-kitzerow.de/mkdocs-hpmpc/
+# site_url: http://127.0.0.1
 theme:
   name: material
   features:
-  - navigation.tabs
-  - navigation.sections
-  - toc.integrate
+  - navigation.instant
+  - navigation.instant.preview
+  # - navigation.tabs
+  # - navigation.tabs.sticky
+  # - navigation.sections
+  - navigation.expand
+  - navigation.path
   - navigation.top
+  # - toc.integrate
+  - toc.follow
   - search.suggest
   - search.highlight
   - content.tabs.link
@@ -41,12 +49,27 @@ plugins:
   - social
   - search
 
+nav:
+  - Home: 'index.md'
+  - 'Software Components':
+    - 'Core': 'core.md'
+    - 'Protocols': 'protocols.md'
+    - 'Datatypes': 'datatypes.md'
+    - 'Programs': 'programs.md'
+    - 'Measurements': 'measurements.md'
+    - "Neural Networks": "nn.md"
+  - "Configurations": "configurations.md"
+  - "The Vectorized Programming Model": "parallel-model.md"
 extra:
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/chart21/hpmpc
 
 markdown_extensions:
+  - toc:
+      permalink: false
+      title: On this page
+
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite

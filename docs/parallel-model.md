@@ -91,6 +91,12 @@ for(int i=0; i<vectorization_factor; i++)
 
 ### Minimizing Communication Rounds
 
+To avoid overhead from parsing and interpreting circuit representations, HPMPC entrusts developers to trigger communication rounds explictly.
+Note that implictly, messages are sent continuously between the parties whenever the `SEND_BUFFER` has been filled to interleave communication and computation. 
+However, to explictly send messages even when the `SEND_BUFFER` is not full, the `Share::communicate()` function is used.
+The function gurantees that all messages of a communication round get sent and should be called at the end of each communication round.
+
+
 The previous examples illustrated how the vectorized programming model can be used to parallelize operations on secret shares.
 However, in addition to vectorizing individual operations, multiple operations should also be grouped together to minimize the number of communication rounds between parties. 
 Assume that x,y, and z are now arrays of size 100. Observe that the following code snippet requires the same number of communication rounds as the previous example, but performs 100 times as many operations. 
@@ -98,7 +104,7 @@ Assume that x,y, and z are now arrays of size 100. Observe that the following co
 ```cpp
 for(int i=0; i<100; i++)
     z[i] = x[i].prepare_mult(y[i]);
-Share::communicate();
+Share::communicate(); // End of first communication round
 for(int i=0; i<100; i++)
     z[i].complete_mult_without_trunc();
 
@@ -107,7 +113,7 @@ UINT_TYPE result_values[100][vectorization_factor];
 
 for(int i=0; i<100; i++)
     z[i].prepare_reveal_to_all();
-Share::communicate();
+Share::communicate(); // End of second communication round
 for(int i=0; i<100; i++)
     vectorized_result_values[i] = z[i].complete_reveal_to_all();
 unorthogonalize_arithmetic(vectorized_result_values, result_values,100);
