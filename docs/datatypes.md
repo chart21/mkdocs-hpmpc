@@ -64,7 +64,7 @@ float float_value = FloatFixedConverter<float, INT_TYPE, UINT_TYPE, FRACTIONAL>:
 ```
 
 !!!Tip
-    Increasing the `BITLENGTH` config option can help to increase the range of fixed point numbers that can be represented. Also, different truncation approaches can be utilized. For instance, `TRUNC_APPROACH=0` requires a slack of a few bits to avoid truncation errors while `TRUNC_APPROACH=1` and `TRUNC_APPROACH=2` do not require a slack but introduce additional communication overhead.
+    Increasing the `BITLENGTH` config option can help to increase the range of fixed point numbers that can be represented. Also, different truncation approaches can be utilized. For instance, `TRUNC_APPROACH=0` requires a slack of a few bits to avoid truncation errors while `TRUNC_APPROACH=1`, `TRUNC_APPROACH=2` and `TRUNC_APPROACH=3` require a slack of only 0-1 bits but introduce additional communication overhead.
 
 
 
