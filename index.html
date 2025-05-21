@@ -1,0 +1,1287 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://c.harth-kitzerow.de/mkdocs-hpmpc/">
+      
+      
+      
+        <link rel="next" href="core/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>HPMPC Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="HPMPC Documentation" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://c.harth-kitzerow.de/mkdocs-hpmpc/assets/images/social/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://c.harth-kitzerow.de/mkdocs-hpmpc/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="HPMPC Documentation" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://c.harth-kitzerow.de/mkdocs-hpmpc/assets/images/social/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hpmpc-high-performance-secure-multi-party-computation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="HPMPC Documentation" class="md-header__button md-logo" aria-label="HPMPC Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HPMPC Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch light/dark mode to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch light/dark mode to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/chart21/hpmpc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="HPMPC Documentation" class="md-nav__button md-logo" aria-label="HPMPC Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    HPMPC Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/chart21/hpmpc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#protocols-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protocols (Overview)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programs-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programs (Overview)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurations-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configurations (Overview)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-vectorized-programming-model-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Vectorized Programming Model (Overview)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compile-and-run-programs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compile and Run Programs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compile and Run Programs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-setting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Setting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splitroles" class="md-nav__link">
+    <span class="md-ellipsis">
+      SplitRoles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU Acceleration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPU Acceleration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-gpu-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-GPU Acceleration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neural-networks-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neural Networks (Overview)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Neural Networks (Overview)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-private-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run Private Inference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measurements-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measurements (Overview)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Software Components
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Software Components
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Core
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Protocols
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="datatypes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Datatypes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="programs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Programs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="measurements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Measurements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Neural Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="configurations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configurations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="parallel-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Vectorized Programming Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#protocols-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protocols (Overview)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programs-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programs (Overview)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurations-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configurations (Overview)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-vectorized-programming-model-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Vectorized Programming Model (Overview)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compile-and-run-programs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compile and Run Programs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compile and Run Programs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-setting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Setting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splitroles" class="md-nav__link">
+    <span class="md-ellipsis">
+      SplitRoles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU Acceleration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPU Acceleration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-gpu-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-GPU Acceleration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neural-networks-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neural Networks (Overview)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Neural Networks (Overview)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-private-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run Private Inference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measurements-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measurements (Overview)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="hpmpc-high-performance-secure-multi-party-computation">HPMPC: High Performance Secure Multi-Party Computation</h1>
+<p>HPMPC is a C++ framework for Secure Multi-Party Computation (MPC) that provides various tweaks and design choices to scale MPC programs to large-scale workloads.
+The framework contains the following software components.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+<th>Dependencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="core/"><code>Core</code></a></td>
+<td>Implements networking, cryptographic primitives, and hardware acceleration techniques such as Bitslicing, Vectorization, and GPU acceleration.</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="protocols/"><code>Protocols</code></a></td>
+<td>Implements various MPC protocols with a fixed interface for each primitive.</td>
+<td>Utilizes high-level interfaces from <code>Core</code> for networking and cryptographic primitives.</td>
+</tr>
+<tr>
+<td><a href="datatypes/"><code>Datatypes</code></a></td>
+<td>Provides datatypes for arithmetic circuits, boolean circuits, and fixed-point arithmetic.</td>
+<td>Maps each operation on secret shares to the primitives implemented by a <code>Protocol</code>.</td>
+</tr>
+<tr>
+<td><a href="programs/"><code>Programs</code></a></td>
+<td>Implements high-level functions, routines, use cases, tests, and benchmarks.</td>
+<td>Utilizes <code>Datatypes</code> to offer a generic programming interface for MPC.</td>
+</tr>
+<tr>
+<td><a href="measurements/"><code>Measurements</code></a></td>
+<td>Provides config files and scripts to automate benchmarking and testing of MPC workloads.</td>
+<td>Uses implemented <code>Programs</code> to run benchmarks and tests.</td>
+</tr>
+<tr>
+<td><a href="nn/"><code>Neural Networks</code></a></td>
+<td>Implements neural network inference with MPC.</td>
+<td>Combines functions implemented in <code>Programs</code> with <code>PIGEON</code>, a templated neural network inference engine to perform private inference</td>
+</tr>
+</tbody>
+</table>
+<p>The framework is designed to be modular and extensible, allowing users to implement new MPC protocols and functions without in-depth knowledge of other components.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Click on the components to navigate to their respective detailed documentation sites. 
+HPMPC also provides an extensive set of configuration options to customize MPC programs, optimize their performances, and support various hardware architectures. For more details, refer to <a href="configurations/">Configurations</a>.</p>
+</div>
+<h2 id="protocols-overview"><a href="protocols/">Protocols (Overview)</a></h2>
+<p>Out of the box, the framework provides multiple MPC protocols that support different primitives. The basic primitives cover secret sharing revealing, addition, and multiplication, which enables computing functions such as AES that do not require share conversion. Protocols supporting all primitives can also evaluate mixed circuits and fixed-point arithmetic. </p>
+<p>Protocols can be selected with the <code>PROTOCOL</code> configuration option when compiling an executable. For instance, setting <code>PROTOCOL=5</code> will compile the executable with Protocol 5 (Trio). 
+The preprocessing phases allow shifting some computation and communication to an input-independent phase before the online phase. This phase is optional and can be activated using the <code>PRE=1</code> config option when compiling an executable.
+Maliciously secure protocols print a terminal message when a hash-based consistency check fails to indicate aborting the computation.</p>
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Adversary Model</th>
+<th>Preprocessing</th>
+<th>Supported Primitives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1</code> Sharemind (3PC)</td>
+<td>Semi-Honest</td>
+<td>✘</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td><code>2</code> Replicated (3PC)</td>
+<td>Semi-Honest</td>
+<td>✘</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td><code>3</code> ASTRA (3PC)</td>
+<td>Semi-Honest</td>
+<td>✔</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td><code>4</code> ABY2 Dummy (2PC)</td>
+<td>Semi-Honest</td>
+<td>✔</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td><code>5</code> Trio (3PC)</td>
+<td>Semi-Honest</td>
+<td>✔</td>
+<td>All</td>
+</tr>
+<tr>
+<td><code>6</code> Trusted Third Party (3PC)</td>
+<td>Semi-Honest</td>
+<td>✘</td>
+<td>All</td>
+</tr>
+<tr>
+<td><code>7</code> Trusted Third Party (4PC)</td>
+<td>Semi-Honest</td>
+<td>✘</td>
+<td>All</td>
+</tr>
+<tr>
+<td><code>8</code> Tetrad (4PC)</td>
+<td>Malicious</td>
+<td>✔</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td><code>9</code> Fantastic Four (4PC)</td>
+<td>Malicious</td>
+<td>✘</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td><code>10</code> Quad (4PC)</td>
+<td>Malicious</td>
+<td>✘</td>
+<td>All</td>
+</tr>
+<tr>
+<td><code>11</code> Quad: Het (4PC)</td>
+<td>Malicious</td>
+<td>✔</td>
+<td>All</td>
+</tr>
+<tr>
+<td><code>12</code> Quad (4PC)</td>
+<td>Malicious</td>
+<td>✔</td>
+<td>All</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For most applications <code>PROTOCOL=5</code> and <code>PROTOCOL=12</code> are recommended.</p>
+</div>
+<h2 id="programs-overview"><a href="programs/">Programs (Overview)</a></h2>
+<p>Each predefined program is mapped to a <code>FUNCTION_IDENTIFIER</code> that can be set when compiling an executable. 
+The <code>protocol_executer.hpp</code> file contains the mapping of <code>FUNCTION_IDENTIFIER</code> to their corresponding source files.
+For instance, <code>FUNCTION_IDENTIFIER</code> 0-7 are reserved for benchmarking different basic primitives. 
+Programs can import <code>Datatypes</code> and existing <code>Functions</code> such as comparisons to program MPC workloads.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are multiple tutorials in <code>programs/tutorial</code> that demonstrate how to implement MPC programs using the framework's interface.</p>
+</div>
+<h2 id="configurations-overview"><a href="configurations/">Configurations (Overview)</a></h2>
+<p><code>Programs</code> can be compiled with various configurations. For instance, a program might use a certain <code>BITLENGTH</code>, <code>PROTOCOL</code>, and number of <code>FRACTIONAL</code> bits for fixed-point arithmetic.
+These config options are fetched from the <code>config.h</code> file which contains extensive configurations for details and tweaks to run MPC programs.
+Changes can be made permanently in the <code>config.h</code> file or temporarily by specifying the option as an argument to the <code>make</code> command.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make<span class="w"> </span>-j<span class="w"> </span><span class="nv">PARTY</span><span class="o">=</span>&lt;party_id&gt;<span class="w"> </span><span class="nv">FUNCTION_IDENTIFIER</span><span class="o">=</span>&lt;function_identifier&gt;<span class="w"> </span><span class="nv">BITLENGTH</span><span class="o">=</span>&lt;bitlength&gt;
+</code></pre></div></p>
+<h2 id="the-vectorized-programming-model-overview"><a href="parallel-model/">The Vectorized Programming Model (Overview)</a></h2>
+<p>The framework uses the register length specified by the <code>DATTYPE</code> config option for all secret shares.
+This means that each arithmetic secret share is inherently a vector of <code>DATTYPE/BITLENGTH</code> elements and each boolean secret share is a vector of <code>DATTYPE</code> elements.
+When setting <code>NUM_PROCESSES</code> to a value greater than 1, the framework will additionally execute the same program on multiple processes in parallel. 
+Applications such as neural network inference, or AES computations especially benefit from this parallelization approach as they require operations on independent batches of data.
+Additionally, the <code>SPLITROLES</code> config option can be used to execute the same program for all party permutations in parallel to achieve load balancing across parties.</p>
+<p>To turn off any kind of inherent parallelization, set <code>DATTYPE=BITLENGTH</code> (or <code>DATTYPE=1</code> for boolean circuits), <code>NUM_PROCESSES=1</code>, and <code>SPLITROLES=0</code>.
+This will result in a single-threaded execution of the program without any vectorization.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Not all <code>DATTYPE</code> values are supported by all hardware architectures. Additionally, some <code>BITLENGTH</code>s are not supported by certain DATTYPEs. Learn more <a href="core/#arch">here</a>. 
+Understanding the vectorized programming model is crucial to writing correct programs. Refer to the tutorials and <a href="parallel-model/">detailed documentation</a> for more information.</p>
+</div>
+<h2 id="compile-and-run-programs">Compile and Run Programs</h2>
+<p>You can use the provided Dockerfile or set up the project manually. The only dependency is OpenSSL. Neural Networks and other functions with matrix operations also require the Eigen library. Install on your target system, for instance via <code>apt install libssl-dev libeigen3-dev</code>. </p>
+<p>To use GPU acceleration for matrix multiplication and convolutions, you need an NVIDIA GPU and the NVCC compiler. You also need a copy of the <a href="https://github.com/NVIDIA/cutlass">CUTLASS</a> library. You can then set up the project as follows.</p>
+<h3 id="setup">Setup</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># General dependencies</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libssl-dev<span class="w"> </span>libeigen3-dev
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Dependencies for GPU acceleration (optional)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/NVIDIA/cutlass.git
+</code></pre></div>
+<h3 id="basic-setting">Basic Setting</h3>
+<p>Programs can be compiled and executed for a specific party in distributed settings or for all parties locally.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Compile and run for all parties</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>make<span class="w"> </span>-j<span class="w"> </span><span class="nv">PARTY</span><span class="o">=</span>all<span class="w"> </span><span class="nv">FUNCTION_IDENTIFIER</span><span class="o">=</span>&lt;function_identifier&gt;<span class="w"> </span><span class="nv">PROTOCOL</span><span class="o">=</span>&lt;protocol_id&gt;
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>scripts/run.sh<span class="w"> </span>-p<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span>&lt;num_parties&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Compile and run for P0, repeat for other parties analogously</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>make<span class="w"> </span>-j<span class="w"> </span><span class="nv">PARTY</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">FUNCTION_IDENTIFIER</span><span class="o">=</span>&lt;function_identifier&gt;<span class="w"> </span><span class="nv">PROTOCOL</span><span class="o">=</span>&lt;protocol_id&gt;
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>scripts/run.sh<span class="w"> </span>-p<span class="w"> </span><span class="m">0</span><span class="w"> </span>-a<span class="w"> </span>&lt;ip_address_p0&gt;<span class="w"> </span>-b<span class="w"> </span>&lt;ip_address_p1&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;ip_address_p2&gt;<span class="w"> </span>-d<span class="w"> </span>&lt;ip_address_p3&gt;
+</code></pre></div>
+<h3 id="splitroles">SplitRoles</h3>
+<p>For additional load balancing, <code>SPLITROLES</code> can be set to 1 to execute a 3PC program for all 6 party permutations in parallel, 2 to execute a 3PC program on four nodes for all 24 party permutations, and 3 to execute a 4PC program on four nodes for all 24 party permutations.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Compile and run for all parties</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>make<span class="w"> </span>-j<span class="w"> </span><span class="nv">PARTY</span><span class="o">=</span>all<span class="w"> </span><span class="nv">FUNCTION_IDENTIFIER</span><span class="o">=</span>&lt;function_identifier&gt;<span class="w"> </span><span class="nv">PROTOCOL</span><span class="o">=</span>&lt;protocol_id&gt;<span class="w"> </span><span class="nv">SPLITROLES</span><span class="o">=</span>&lt;splitroles_id&gt;
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>scripts/run.sh<span class="w"> </span>-p<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span>&lt;num_parties&gt;<span class="w"> </span>-s<span class="w"> </span>&lt;splitroles_id&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Compile and run for P0, repeat for other parties analogously</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>make<span class="w"> </span>-j<span class="w"> </span><span class="nv">PARTY</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">FUNCTION_IDENTIFIER</span><span class="o">=</span>&lt;function_identifier&gt;<span class="w"> </span><span class="nv">PROTOCOL</span><span class="o">=</span>&lt;protocol_id&gt;<span class="w"> </span><span class="nv">SPLITROLES</span><span class="o">=</span>&lt;splitroles_id&gt;
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>scripts/run.sh<span class="w"> </span>-p<span class="w"> </span><span class="m">0</span><span class="w"> </span>-a<span class="w"> </span>&lt;ip_address_p0&gt;<span class="w"> </span>-b<span class="w"> </span>&lt;ip_address_p1&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;ip_address_p2&gt;<span class="w"> </span>-d<span class="w"> </span>&lt;ip_address_p3&gt;<span class="w"> </span>-s<span class="w"> </span>&lt;splitroles_id&gt;
+</code></pre></div>
+<h3 id="gpu-acceleration">GPU Acceleration</h3>
+<p>The framework supports GPU acceleration for matrix multiplication by using CUDA.
+This requires to first compile the standalone CUDA executables.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Cutlass is required for GPU acceleration</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/NVIDIA/cutlass.git
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">cd</span><span class="w"> </span>core/cuda
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Replace with your architecture, nvcc path, and CUTLASS path:</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>make<span class="w"> </span>-j<span class="w"> </span><span class="nv">arch</span><span class="o">=</span>sm_89<span class="w"> </span><span class="nv">CUDA_PATH</span><span class="o">=</span>/usr/local/cuda<span class="w"> </span><span class="nv">CUTLASS_PATH</span><span class="o">=</span>/home/user/cutlass<span class="w"> </span>
+</code></pre></div>
+<p>The framework implements different approaches to accelerate convolutions and matrix multiplications <code>USE_CUDA_GEMM=2</code> or <code>USE_CUDA_GEMM=4</code> are good starting points for most applications.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Compile and run for all parties</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>make<span class="w"> </span>-j<span class="w"> </span><span class="nv">PARTY</span><span class="o">=</span>all<span class="w"> </span><span class="nv">FUNCTION_IDENTIFIER</span><span class="o">=</span>&lt;function_identifier&gt;<span class="w"> </span><span class="nv">PROTOCOL</span><span class="o">=</span>&lt;protocol_id&gt;<span class="w"> </span><span class="nv">USE_CUDA_GEMM</span><span class="o">=</span><span class="m">2</span><span class="sb">```</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Compile and run for P0, repeat for other parties analogously</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>make<span class="w"> </span>-j<span class="w"> </span><span class="nv">PARTY</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">FUNCTION_IDENTIFIER</span><span class="o">=</span>&lt;function_identifier&gt;<span class="w"> </span><span class="nv">PROTOCOL</span><span class="o">=</span>&lt;protocol_id&gt;<span class="w"> </span><span class="nv">USE_CUDA_GEMM</span><span class="o">=</span><span class="m">2</span><span class="sb">```</span>
+</code></pre></div>
+<h4 id="multi-gpu-acceleration">Multi-GPU Acceleration</h4>
+<p>If each node has access to multiple GPUs these can be utilized with the <code>-g</code> option at runtime.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Run SplitRoles executable for P0 and utilize 6 GPUs for convolutions and matrix multiplications</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>scripts/run.sh<span class="w"> </span>-p<span class="w"> </span><span class="m">0</span><span class="w"> </span>-a<span class="w"> </span>&lt;ip_address_p0&gt;<span class="w"> </span>-b<span class="w"> </span>&lt;ip_address_p1&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;ip_address_p2&gt;<span class="w"> </span>-d<span class="w"> </span>&lt;ip_address_p3&gt;<span class="w"> </span>-s<span class="w"> </span><span class="m">1</span><span class="w"> </span>-g<span class="w"> </span><span class="m">6</span>
+</code></pre></div></p>
+<h2 id="neural-networks-overview"><a href="nn/">Neural Networks (Overview)</a></h2>
+<p>The <code>PIGEON</code> (Private Inference of Neural Networks) submodule is a templated neural network inference engine that can be used to run neural networks using MPC. 
+The second submodule, <code>PyGEON</code>, enables training and exporting models and datasets in PyTorch and importing them to <code>PIGEON</code> for inference.
+The <code>NN</code> program orchestrates the execution of <code>PIGEON</code> and the MPC backend. </p>
+<h3 id="setup_1">Setup</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Load Submodules for Neural Networks</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Dependencies for training and exporting models and datasets</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>pip<span class="w"> </span>install<span class="w"> </span>torch<span class="w"> </span>torchvision<span class="w"> </span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Dependencies for downloading pretrained models and datasets</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>pip<span class="w"> </span>install<span class="w"> </span>gdown<span class="w"> </span>
+</code></pre></div>
+<h3 id="run-private-inference">Run Private Inference</h3>
+<p>The <code>programs/NN.hpp</code> file contains a mapping of various neural network architectures to a <code>FUNCTION_IDENTIFIER</code>. 
+The following command compiles a neural network inference of <code>VGG16</code> on the CIFAR-10 dataset (<code>FUNCTION_IDENTIFIER=74</code>). 
+The batch size in the following example is <code>NUM_INPUTS</code> <span class="arithmatex">\(\cdot\)</span> <code>DATTYPE</code>/<code>BITLENGTH</code> <span class="arithmatex">\(\cdot\)</span> <code>PROCESS_NUM</code> <span class="arithmatex">\(\cdot\)</span> <code>SPLITROLES_FACTOR</code> <span class="arithmatex">\(=\)</span> 1 <span class="arithmatex">\(\cdot\)</span> 256/32 <span class="arithmatex">\(\cdot\)</span> 4 <span class="arithmatex">\(\cdot\)</span> 6 <span class="arithmatex">\(=\)</span> 192.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="sb">`</span>SPLITROLES_FACTOR<span class="w"> </span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>make<span class="w"> </span>-j<span class="w"> </span><span class="nv">PARTY</span><span class="o">=</span>&lt;party_id&gt;<span class="w"> </span><span class="nv">FUNCTION_IDENTIFIER</span><span class="o">=</span><span class="m">74</span><span class="w"> </span><span class="nv">BITLENGTH</span><span class="o">=</span><span class="m">32</span><span class="w"> </span><span class="nv">FRACTIONAL</span><span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="nv">DATTYPE</span><span class="o">=</span><span class="m">256</span><span class="w"> </span><span class="nv">SPLITROLES</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">PROCESS_NUM</span><span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="nv">PROTOCOL</span><span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="nv">NUM_INPUTS</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">USE_CUDA_GEMM</span><span class="o">=</span><span class="m">2</span>
+</code></pre></div>
+<p>The command above uses dummy weights and datasets. To use real weights and datasets, the <code>MODELOWNER</code> and <code>DATAOWNER</code> config options must be set to the party that holds the model and the party that holds the dataset respectively. Additionally, pretrained models need to be available for importing.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">cd</span><span class="w"> </span>nn/Pygeon
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1"># Option 1: Train a VGG16 model and export it to PyGEON </span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w"> </span>python<span class="w"> </span>main.py<span class="w"> </span>--action<span class="w"> </span>train<span class="w"> </span>--export_model<span class="w"> </span>--export_dataset<span class="w"> </span>--transform<span class="w"> </span>standard<span class="w"> </span>--model<span class="w"> </span>VGG16<span class="w"> </span>--num_classes<span class="w"> </span><span class="m">10</span><span class="w"> </span>--dataset_name<span class="w"> </span>CIFAR-10<span class="w"> </span>--modelpath<span class="w"> </span>./models/alexnet_cifar<span class="w"> </span>--num_epochs<span class="w"> </span><span class="m">30</span><span class="w"> </span>--lr<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span>--criterion<span class="w"> </span>CrossEntropyLoss<span class="w"> </span>--optimizer<span class="w"> </span>Adam
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Option 2: Download a pretrained VGG16 model and CIFAR10 dataset</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>python<span class="w"> </span>download_pretrained.py<span class="w"> </span>single_model<span class="w"> </span>datasets
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># Set environment variables for the party holding the model parameters</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">MODEL_DIR</span><span class="o">=</span>nn/Pygeon/models/pretrained
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="nb">export</span><span class="w"> </span><span class="nv">MODEL_FILE</span><span class="o">=</span>VGG16_CIFAR-10_standard.bin<span class="w"> </span><span class="c1">#adjust path if needed</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="c1"># Set environment variables for the party holding the dataset</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DATA_DIR</span><span class="o">=</span>nn/Pygeon/data/datasets
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SAMPLES_FILE</span><span class="o">=</span>CIFAR-10_standard_test_images.bin
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LABELS_FILE</span><span class="o">=</span>CIFAR-10_standard_test_labels.bin<span class="w"> </span><span class="c1">#adjust path if needed</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="c1">#Compile the program, specify the party that holds the model and the dataset</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>make<span class="w"> </span>-j<span class="w"> </span><span class="nv">PARTY</span><span class="o">=</span>&lt;party_id&gt;<span class="w"> </span><span class="nv">MODELOWNER</span><span class="o">=</span>P_0<span class="w"> </span><span class="nv">DATAOWNER</span><span class="o">=</span>P_1<span class="w"> </span><span class="nv">FUNCTION_IDENTIFIER</span><span class="o">=</span><span class="m">74</span><span class="w"> </span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="c1"># Run the program</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>scripts/run.sh<span class="w"> </span>-p<span class="w"> </span>&lt;party_id&gt;<span class="w"> </span>-a<span class="w"> </span>&lt;ip_address_a&gt;<span class="w"> </span>-b<span class="w"> </span>&lt;ip_address_b&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;ip_address_c&gt;<span class="w"> </span>-d<span class="w"> </span>&lt;ip_address_d&gt;<span class="w"> </span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>There is an extensive set of configuration options to optimize the performance of Neural Network inference such as different truncation and adder approaches. For more details, refer to <a href="configurations/#neural-network-settings">Neural Network Settings</a>.</p>
+</div>
+<h2 id="measurements-overview"><a href="measurements/">Measurements (Overview)</a></h2>
+<p>To automate benchmarking of multiple configurations, the framework provides configuration files in <code>measurements/configs/</code>. By using the associated <code>measurements/run_config.py</code> and <code>measurements/parse_logs.py</code> scripts, programs can be compiled and executed with various configurations while results are stored in the <code>measurements/logs/</code> directory. 
+The following command is an example of running a benchmark and parsing the results.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>./measurements/run_config.py<span class="w"> </span>-p<span class="w"> </span>&lt;party_id&gt;<span class="w"> </span>-a<span class="w"> </span>&lt;ip_address_a&gt;<span class="w"> </span>-b<span class="w"> </span>&lt;ip_address_b&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;ip_address_c&gt;<span class="w"> </span>-d<span class="w"> </span>&lt;ip_address_d&gt;<span class="w"> </span>-i<span class="w"> </span><span class="m">10</span><span class="w"> </span>measurements/configs/&lt;config_file&gt;.conf<span class="w"> </span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>./measurements/parse_logs.py<span class="w"> </span>measurements/logs/&lt;log_file&gt;.log
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The --override option allows specifying a different value than the one in the config file. This might be necessary to adjust a <code>.conf</code> file to a specific target hardware. Learn more <a href="measurements/#automate-benchmarking">here</a>.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 <a href="https://github.com/chart21"  target="_blank" rel="noopener">Christopher Harth-Kitzerow</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/chart21/hpmpc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.instant.preview", "navigation.expand", "navigation.path", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
