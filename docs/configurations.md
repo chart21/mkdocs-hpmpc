@@ -54,11 +54,11 @@ make -j PARTY=<party_id> FUNCTION_IDENTIFIER=<function_identifier> NUM_INPUTS=<n
 | `MODELOWNER` | Who holds the model parameters? | Use `P_0` for party 0, `P_1` for party 1, etc. Use -1 to use dummy model parameters. |
 | `DATAOWNER` | Who holds the data? | Use `P_0` for party 0, `P_1` for party 1, etc. Use -1 to use dummy data. |
 | `TRUNC_THEN_MULT` | Truncate before or after multiplication. | Set to 1 for higher accuracy in most cases. |
-| `TRUNC_APPROACH` | Truncation approach. Use 0 for stochastic truncation with a large slack, 1 for stochastic truncation with slack=1, 2 for exact truncation with slack=1, 3 for exact truncation with slack=0, 4 for mixed stochastic truncation | Prefer 0 for performance and 1, 2, or 4 for accuracy. |
+| `TRUNC_APPROACH` | Truncation approach. Use `0` for stochastic truncation with a large slack; `1` for stochastic truncation with a slack of 1; `2` for exact truncation with a slack of 1; `3` for exact truncation with slack of 0; `4` for mixed stochastic truncation | Prefer `0` for performance and `1`, `2`, or `4` for accuracy. |
 | `TRUNC_DELAYED` | Delay CONV truncation until next ReLU. | Must be set to 1 for truncation approaches 1 and 2. |
-| `COMPUTE_ARGMAX` | Compute final Argmax during inference. | Set to 0 to reveal class probabilities. |
-| `PUBLIC_WEIGHTS` | Use public weights. | Set to 1 to use public weights for improved performance. |
-| `COMPRESS` | Use 8-bit ReLUs for all layers. | Set to 1 to benchmark ReLUs with reduced bitlength. |
+| `COMPUTE_ARGMAX` | Compute final Argmax during inference. | Set to `0` to reveal class probabilities. |
+| `PUBLIC_WEIGHTS` | Use public weights. | Set to `1` to use public weights for improved performance. |
+| `COMPRESS` | Use 8-bit ReLUs for all layers. | Set to `1` to benchmark ReLUs with reduced bitlength. |
 | `REDUCED_BITLENGTH_k` | cut off BITLENGTH-k least significant bits before sign bit extraction. | May reduce accuracy significantly. |
 | `REDUCED_BITLENGTH_m` | cut off m most significant bits before sign bit extraction. | May reduce accuracy significantly. |
 | `IS_TRAINING` | Training or inference phase. | Training is not supported yet. |
